@@ -38,6 +38,12 @@ resource "aws_sfn_state_machine" "this" {
   }
 
   type = upper(var.type)
+  
+  lifecycle {
+    ignore_changes = [
+      definition
+    ]
+  }
 
   tags = merge({ Name = var.name }, var.tags)
 }
